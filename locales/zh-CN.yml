@@ -1,0 +1,18 @@
+header:
+  home: 首页
+  introduction: 公司介绍
+  guide: 引导指南
+  ticket: 票务预订
+  panorama: 全景展示
+  mall: 产品展示
+  information: 公司资讯
+  language: 中文简体
+  reverse_language: English
+footer:
+  copyright: Copyright © 2024 1111111 保留所有权利。
+  record: 公安备案号1111111111111
+  filing: 鄂ICP备11111111号
+  contact: 联系我们
+  wechat_account: 公众号
+  wechat: 微信
+not-found: 未找到页面
