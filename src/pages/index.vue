@@ -76,34 +76,6 @@ function onSlideChangeEvent() {
     <div class="mt-103px text-44px font-800 lg:text-62px">
       Where the world builds software
     </div>
-    <div class="mb-133px mt-62px h-240px w-100% lg:h-560px lg:max-w-1440px">
-      <Swiper
-        effect="coverflow"
-        :slides-per-view="2"
-        :modules="modules"
-        :coverflow-effect="coverflowEffect"
-        :centered-slides="true"
-        :loop="true"
-        @init="initSwiper"
-        @slide-change-transition-end="onSlideChangeEvent"
-      >
-        <SwiperSlide v-for="(item, index) in markingList" :key="index">
-          <div class="relative h-240px w-100% cursor-pointer overflow-hidden rounded-md lg:h-560px lg:rounded-12px">
-            <img class="h-full w-full object-cover" :src="item.head_img">
-            <div class="marking-info-container absolute bottom-0 pl-24px pt-24px">
-              <div class="text-4xl color-semantic-200 font-600 tracking-wide">
-                {{ item.name }}
-              </div>
-              <div
-                class="line-clamp-2 mt-14px max-w-80% text-base color-semantic-100"
-              >
-                {{ item.subtitle }}
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
   </div>
 </template>
 

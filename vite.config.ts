@@ -23,11 +23,11 @@ export default defineConfig(({ command }) => ({
     host: '192.168.10.129',
     port: 3000,
     proxy: {
-      '/index': {
-        target: 'https://dev.ad.net.cn',
+      '/api': {
+        target: 'https://api.3dweb.top',
         ws: false,
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/index/, ''),
+        // rewrite: path => path.replace(/^\/index/, ''),
       },
     },
     cors: true,
