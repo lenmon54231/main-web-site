@@ -36,7 +36,6 @@ async function deleteUsers(item) {
 
 async function updateUsers(item) {
   const { _id, name } = item
-  console.log(' _id, name: ', _id, name)
   if (_id && name) {
     await service.put(`/api/users/${_id}`, { name })
     getUsersList()

@@ -7,7 +7,7 @@ const { locale } = useI18n()
 const headerItemList = ref([
   { id: 'home', name: 'header.home', path: '/', isTrans: true,
   },
-  { id: 'introduction', name: 'header.introduction', path: '/introduction' },
+  { id: 'introduction', name: '数据测试', path: '/introduction' },
   {
     id: 'guide',
     name: 'header.guide',
@@ -179,7 +179,8 @@ watch(() => route.path, async () => {
 }
 
 .bg-purple-to-blue {
-  background: radial-gradient(141.42% 141.42% at 100% 0%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)),
+  background:
+    radial-gradient(141.42% 141.42% at 100% 0%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)),
     radial-gradient(140.35% 140.35% at 100% 94.74%, rgb(189, 52, 254), rgba(189, 52, 254, 0.6)),
     radial-gradient(89.94% 89.94% at 18.42% 15.79%, rgb(65, 209, 255), rgba(65, 209, 255, 0.8));
   box-shadow: 0 1px rgba(255, 255, 255, 0.149) inset;
