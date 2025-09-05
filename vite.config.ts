@@ -34,7 +34,7 @@ export default defineConfig(({ command }) => ({
   },
 
   /* 打包配置 */
-  base: command === 'build' ? '/web/' : '',
+  base: command === 'build' ? '/' : '',
 
   plugins: [
     VueMacros({
