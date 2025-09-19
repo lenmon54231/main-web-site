@@ -11,7 +11,7 @@ const fullPageList = [
 <template>
   <main v-if="!fullPageList.includes($route.name)" class="relative min-h-full flex flex-col items-center justify-between overflow-hidden">
     <TheHeader />
-    <div class="z-1 h-full w-full flex-col-center">
+    <div class="z-1 h-full w-full flex-col-center flex-1">
       <RouterView v-slot="{ Component }">
         <keep-alive>
           <component :is="Component" v-if="keepAliveList.includes($route.name)" />

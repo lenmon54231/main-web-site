@@ -7,7 +7,7 @@ const { locale } = useI18n()
 const headerItemList = ref([
   { id: 'home', name: 'header.home', path: '/', isTrans: true,
   },
-  { id: 'introduction', name: '数据测试', path: '/introduction' },
+  { id: 'introduction', name: 'header.introduction', path: '/introduction' },
   {
     id: 'guide',
     name: 'header.guide',

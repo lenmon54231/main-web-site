@@ -1,11 +1,11 @@
 header:
   home: 首页
-  introduction: 公司介绍
-  guide: 引导指南
-  ticket: 票务预订
+  introduction: 登录测试
+  guide: 模型展示
+  ticket: xx
   panorama: 全景展示
-  mall: 产品展示
-  information: 公司资讯
+  mall: yy
+  information: zz
   language: 中文简体
   reverse_language: English
 footer:

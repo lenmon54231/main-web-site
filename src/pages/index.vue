@@ -30,7 +30,6 @@ onMounted(async () => {
   env.value = await getCurrentEnv()
 })
 
-// swiper组件使用数据
 const currentMarkingInfo: any = ref({})
 const markingList: any = ref([
   {
