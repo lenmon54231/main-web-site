@@ -37,8 +37,8 @@ export const device = (() => {
   // iPadOS 会模拟MAC的信息。用特殊方法检测。
   const isIPad
     = osName === 'Mac OS'
-    && undefined === window.safari
-    && undefined !== navigator.standalone
+      && undefined === window.safari
+      && undefined !== navigator.standalone
   return {
     supportWebGL,
     supportWebRTC,
@@ -64,8 +64,8 @@ export const device = (() => {
     isXHS: /xhsminiapp/i.test(ua),
     isSafariOrChrome:
       !!(browserName === 'Mobile Safari'
-      || (isIPad && browserName === 'Safari')
-      || browserName === 'Chrome'),
+        || (isIPad && browserName === 'Safari')
+        || browserName === 'Chrome'),
     isPC: !(
       osName === 'Android'
       || osName === 'android'
@@ -112,4 +112,10 @@ export function buyTicket() {
 
 export function toPanorama() {
   window.open(vrUrl, '_blank')
+}
+
+export function getStorage(key: string): string | null {
+  if (typeof window === 'undefined')
+    return null
+  return localStorage.getItem(key)
 }

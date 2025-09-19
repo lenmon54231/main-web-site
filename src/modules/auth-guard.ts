@@ -1,11 +1,12 @@
 import type { UserModule } from '~/types'
+import { getStorage } from '~/utils/common'
 
 export const install: UserModule = ({ router }) => {
   /* 白名单 */
   const whiteList = ['/login', '/register', '/']
 
   router.beforeEach((to) => {
-    const token = localStorage.getItem('token')
+    const token = getStorage('token')
 
     // 已登录但还在登录页，就回家
     if (token && to.path === '/login')
