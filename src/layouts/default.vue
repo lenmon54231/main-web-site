@@ -2,10 +2,14 @@
 const keepAliveList = [
   '/information/',
 ]
+
+const fullPageList = [
+  '/login/',
+]
 </script>
 
 <template>
-  <main class="relative min-h-full flex flex-col items-center justify-between overflow-hidden">
+  <main v-if="!fullPageList.includes($route.name)" class="relative min-h-full flex flex-col items-center justify-between overflow-hidden">
     <TheHeader />
     <div class="z-1 h-full w-full flex-col-center">
       <RouterView v-slot="{ Component }">
@@ -16,6 +20,11 @@ const keepAliveList = [
       </RouterView>
     </div>
     <TheFooter class="z-1" />
+  </main>
+  <main v-else>
+    <RouterView v-slot="{ Component }">
+      <component :is="Component" />
+    </RouterView>
   </main>
 </template>
 

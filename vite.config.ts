@@ -25,6 +25,7 @@ export default defineConfig(({ command }) => ({
     proxy: {
       '/api': {
         target: 'https://api.3dweb.top',
+        // target: 'http://localhost:3000',
         ws: false,
         changeOrigin: true,
         // rewrite: path => path.replace(/^\/index/, ''),

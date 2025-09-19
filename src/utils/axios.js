@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'vue-sonner'
 
 const ContentType = {
   urlencoded: 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -29,6 +30,13 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     return response.data
+  },
+  (err) => {
+    const { error, message } = err?.response?.data
+    toast.error(error ?? message, {
+      duration: 1500,
+    })
+    Promise.reject(err)
   },
 )
 

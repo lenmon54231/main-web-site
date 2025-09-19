@@ -7,10 +7,10 @@ onMounted(async () => {
   env.value = await getCurrentEnv()
 })
 
-const usersName = ref('')
+const email = ref('')
 async function addUser() {
-  if (usersName.value) {
-    await service.post('/api/users', { name: usersName.value, age: 20 })
+  if (email.value) {
+    await service.post('/api/users', { username: '111', email: email.value, password: '123456' })
     getUsersList()
   }
 }
@@ -46,14 +46,15 @@ async function updateUsers(item) {
 <template>
   <div :class="env === 'pc' ? 'mt--80px mb-80px' : 'mt-0px mb-0px'" class="h-full w-full flex-col-center">
     <div class="flex-center">
-      <input v-model="usersName" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
+      <input v-model="email" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
       <button class="mt-12px h-40px w-120px rounded-4px bg-#eee hover:bg-#788 hover:color-#fff" @click="addUser">
         新增用户
       </button>
     </div>
     <div class="mt-12px">
-      <div v-for="item in usersList" :key="item._id" class="mt-12px w-400px flex-row-center">
-        <input v-model="item.name" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
+      <div v-for="item in usersList" :key="item._id" class="mt-12px flex-row-center">
+        <input v-model="item.username" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
+        <input v-model="item.email" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
         <button class="mr-12px h-40px w-120px rounded-4px bg-#eee hover:bg-#788 hover:color-#fff" @click="updateUsers(item)">
           更新名称
         </button>
