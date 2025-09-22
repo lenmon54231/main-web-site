@@ -19,7 +19,6 @@ const fullPageList = [
         <component :is="Component" v-if="!keepAliveList.includes($route.name)" />
       </RouterView>
     </div>
-    <TheFooter class="z-1" />
   </main>
   <main v-else>
     <RouterView v-slot="{ Component }">

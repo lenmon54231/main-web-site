@@ -18,14 +18,13 @@ onMounted(() => {
 
   /* 1. 场景 & 相机 */
   scene = new THREE.Scene()
-  //   scene.background = new THREE.Color(0xF5F5F5)
   camera = new THREE.PerspectiveCamera(
     45,
     threeContainer.value.clientWidth / threeContainer.value.clientHeight,
     0.1,
     1000,
   )
-  camera.position.set(0, 0.8, 0.8)
+  camera.position.set(0, 1.1, 0.7)
 
   /* 2. 渲染器 */
   renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -38,12 +37,14 @@ onMounted(() => {
   controls.enableDamping = true
   controls.autoRotate = true // ✅ 开启自动旋转
   controls.autoRotateSpeed = 1.0
+  controls.target.set(0, -0.1, 0)
 
   /* 5. 加载模型（公开 glb） */
   const loader = new GLTFLoader()
   loader.load(
     'https://limengtupian.oss-cn-beijing.aliyuncs.com/a-model/rolex.glb',
     (gltf) => {
+      gltf.scene.position.y = -0.1
       scene.add(gltf.scene)
     },
     undefined,
@@ -59,7 +60,7 @@ onMounted(() => {
       const envMap = pmremGenerator.fromEquirectangular(texture).texture
       scene.environment = envMap // 给所有 PBR 材质提供环境反射
       //   scene.background = envMap // 也可当背景
-      scene.background = new THREE.Color(0xF5F5F5)
+      scene.background = new THREE.Color(0x3A7CA5)
       texture.dispose()
       pmremGenerator.dispose()
     },

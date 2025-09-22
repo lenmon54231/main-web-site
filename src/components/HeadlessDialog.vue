@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
-const { t } = useI18n()
-
 interface Props {
   title?: string
   isOpen?: boolean
@@ -67,7 +65,7 @@ function closeModal() {
                   class="inline-flex justify-center border border-transparent rounded-md bg-blue-100 px-4 py-2 text-sm text-blue-900 font-medium hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                   @click="closeModal"
                 >
-                  {{ t('components.dialog.confirm') }}
+                  确定
                 </button>
               </div>
             </DialogPanel>

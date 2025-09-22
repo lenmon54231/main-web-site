@@ -28,9 +28,6 @@ import presetRemToPx from '@unocss/preset-rem-to-px'
 export default defineConfig({
   theme: {
     colors: {
-      brand: { // 主色
-        DEFAULT: '#D6B179', // class="bg-brand"
-      },
       semantic: { // 辅助色
         100: '#faf3e0', // class="bg-semantic-100"
         200: '#FFF6E1', // class="bg-semantic-200"
@@ -42,21 +39,62 @@ export default defineConfig({
         800: '#935710', // class="bg-semantic-800"
         900: '#7A420A', // class="bg-semantic-900"
       },
-      primary: {
 
+      /* 石青主背景 + 衍生梯度 */
+      blue: {
+        DEFAULT: '#3a7ca5',
+        100: '#e6f0f5',
+        200: '#c3d9e6',
+        300: '#9cc0d4',
+        400: '#6fa3bd',
+        500: '#3a7ca5', // ← 你指定的主背景
+        600: '#2e658a',
+        700: '#255270',
+        800: '#1a3b52',
+        900: '#0f2735',
       },
-      neutral: { // 中性色
-        200: '#f5f5f7', // class="bg-neutral-200"
-      },
-      embellishment: { // 点缀色
-        500: '#f50057', // class="bg-embellishment-500"
-      },
-      base: {
-        black: '#5A5A5A', // class="bg-light-black"
-      },
-      // 文字颜色
-      text: 'rgba(94, 74, 35, 1)', // class='bg-text'
 
+      /* 金箔系列 */
+      gold: {
+        DEFAULT: '#d4af37',
+        100: '#fcf8e6',
+        200: '#f9edc0',
+        300: '#f7e099',
+        400: '#f5d372',
+        500: '#d4af37', // 主金色
+        600: '#b89730',
+        700: '#9c7f29',
+        800: '#7f6622',
+        900: '#644e1b',
+      },
+
+      /* 石绿系列 */
+      green: {
+        DEFAULT: '#4a8b6b',
+        100: '#e6f0e8',
+        200: '#c3d9cb',
+        300: '#9cc0a8',
+        400: '#6fa384',
+        500: '#4a8b6b',
+        600: '#3c7157',
+        700: '#2f5844',
+        800: '#223f31',
+        900: '#16261f',
+      },
+
+      /* 朱砂系列（危险/删除） */
+      red: {
+        DEFAULT: '#e86a61',
+        100: '#fae6e5',
+        200: '#f4c3c0',
+        300: '#ec9c96',
+        400: '#e46f66',
+        500: '#e86a61',
+        600: '#d0554d',
+        700: '#b3463f',
+        800: '#933731',
+        900: '#7a2a25',
+      },
     },
   },
   extendTheme: (theme: any) => {

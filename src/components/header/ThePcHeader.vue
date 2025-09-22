@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import logoImage from '~/assets/image/header_logo.png'
 
-const { t } = useI18n()
-
 interface Props {
   headerItemList?: any
   env?: string
@@ -16,14 +14,6 @@ const emits = defineEmits(['toggleLocales', 'toPanorama', 'updateIsTop', 'update
 
 function toPanorama() {
   emits('toPanorama')
-}
-
-function buyTicket() {
-  emits('buyTicket')
-}
-
-function toggleLocales() {
-  emits('toggleLocales')
 }
 
 const activeHeaderId = ref('home')
@@ -86,86 +76,65 @@ function removeScrollEvent() {
 </script>
 
 <template>
-  <div
-    v-for="(item, index) in headerItemList"
-    :key="index"
-    class="h-full w-76px flex-col-center text-center"
-    :class="item.id === 'logo' ? 'flex-1 max-w-216px max-h-54px mx-15px' : 'max-w-76px w-76px'"
-  >
-    <div
-      v-if="item.id === 'language'"
-      class="group mb-1 h-25px cursor-pointer overflow-hidden"
-      @click="toggleLocales()"
-    >
-      <div class="translate-y-0 transition-all group-hover:translate-y-[-50%]">
-        <div min-w-76px>
-          {{ t('header.language') }}
-        </div>
-        <div min-w-76px :class="activeHeaderId === 'home' && isTop ? 'color-semantic-100' : 'color-#fac52b' ">
-          {{ t('header.reverse_language') }}
-        </div>
-      </div>
-    </div>
-    <div
-      v-else-if="item.id === 'panorama'"
-      class="header-item-container"
-      :class="activeHeaderId === item.id ? 'active' : ''"
-      @click="toPanorama"
-    >
-      {{ t(item.name) }}
-    </div>
-    <div
-      v-else-if="item.id === 'ticket'"
-      class="header-item-container"
-      :class="activeHeaderId === item.id ? 'active' : ''"
-      @click="buyTicket"
-    >
-      {{ t(item.name) }}
-    </div>
+  <div class="mx-15px hidden h-full max-w-1300px w-full items-center justify-between lg:flex">
     <img
-      v-else-if="item.id === 'logo'"
-      h-full
+      class="mt-8px w-100px sm:mt-0px sm:max-w-216px"
       :src="logoImage"
+      object-cover
     >
-    <RouterLink
-      v-else
-      class="header-item-container"
-      :class="activeHeaderId === item.id ? 'active' : ''"
-      :to="item.path"
-      @click="changeActiveHeaderId(item.id)"
-    >
-      <div class="router-link-text">
-        {{ t(item.name) }}
+    <div class="h-full flex-row-around">
+      <div
+        v-for="(item, index) in headerItemList"
+        :key="index"
+        class="mx-15px h-full max-w-76px w-76px w-76px flex-col-center text-center"
+      >
+        <div
+          v-if="item.id === 'panorama'"
+          class="header-item-container"
+          :class="activeHeaderId === item.id ? 'active' : ''"
+          @click="toPanorama"
+        >
+          {{ item.name }}
+        </div>
+        <RouterLink
+          v-else
+          class="header-item-container"
+          :class="activeHeaderId === item.id ? 'active' : ''"
+          :to="item.path"
+          @click="changeActiveHeaderId(item.id)"
+        >
+          <div class="router-link-text">
+            {{ item.name }}
+          </div>
+        </RouterLink>
       </div>
-    </RouterLink>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .header-item-container {
-  @apply position-relative h-full flex-row-center w-full pb-1;
+  @apply position-relative h-full flex-row-center w-full pb-1 color-semantic-200;
   @apply cursor-pointer;
 }
 
 .header-item-container::before {
   content: '';
   position: absolute;
-  top: 6px;
+  top: 13px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
+  width: 74%;
   height: 4px;
+  border-radius: 4px;
 }
 
-.header-item-container:hover::before {
-  background-color: #fac52b;
-}
-
+.header-item-container:hover::before,
 .active::before {
-  background-color: #fac52b;
+  @apply bg-red;
 }
 
 .active > .router-link-text {
-  text-shadow: 3px 2px 12px rgba(255, 255, 255, 0.88);
+  text-shadow: 3px 2px 12px rgba(0, 0, 0, 0.2);
 }
 </style>

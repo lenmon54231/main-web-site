@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { TransitionChild, TransitionRoot } from '@headlessui/vue'
 
-const { t } = useI18n()
-
 interface Props {
   isShowMenuList?: boolean
   headerItemList?: any
@@ -13,22 +11,14 @@ withDefaults(defineProps<Props>(), {
   headerItemList: () => [],
 })
 
-const emits = defineEmits(['close', 'toggleLocales', 'toPanorama', 'buyTicket'])
+const emits = defineEmits(['close', 'toPanorama'])
 
 function close() {
   emits('close')
 }
 
-function toggleLocales() {
-  emits('toggleLocales')
-}
-
 function toPanorama() {
   emits('toPanorama')
-}
-
-function buyTicket() {
-  emits('buyTicket')
 }
 </script>
 
@@ -61,33 +51,11 @@ function buyTicket() {
         v-for="(item, index) in headerItemList" :key="index"
       >
         <div
-          v-if="item.id === 'language'"
-          class="mobile-menu-item flex-row-center"
-          @click="toggleLocales()"
-        >
-          <div>
-            中文
-          </div>
-          <div class="mx-2">
-            |
-          </div>
-          <div>
-            EN
-          </div>
-        </div>
-        <div
           v-if="item.id === 'panorama'"
           class="mobile-menu-item flex-row-start border-b-1 border-b-semantic-700/30 pl-34px"
           @click="toPanorama"
         >
-          {{ t(item.name) }}
-        </div>
-        <div
-          v-if="item.id === 'ticket'"
-          class="mobile-menu-item flex-row-start border-b-1 border-b-semantic-700/30 pl-34px"
-          @click="buyTicket"
-        >
-          {{ t(item.name) }}
+          {{ item.name }}
         </div>
         <RouterLink
           v-if="item.id !== 'logo' && item.id !== 'panorama' && item.id !== 'language' && item.id !== 'ticket'"
@@ -95,7 +63,7 @@ function buyTicket() {
           class="mobile-menu-item flex-row-start border-b-1 border-b-semantic-700/30 pl-34px"
           @click="close"
         >
-          {{ t(item.name) }}
+          {{ item.name }}
         </RouterLink>
       </div>
     </TransitionChild>

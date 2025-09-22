@@ -5,6 +5,7 @@ body,
   margin: 0;
   padding: 0;
   font-family:
+    'SourceHanSerifCN',
     'PingFang SC',
     'Noto Sans SC',
     -apple-system,
@@ -12,6 +13,15 @@ body,
     'Segoe UI',
     sans-serif;
   font-optical-sizing: auto;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceHanSerifCN';
+  font-display: swap;
+  src: url('/src/assets/fonts/SourceHanSerifCN-Regular.ttf') format('truetype');
+  /* src: url('/src/assets/fonts/HYDunHuangXieJingW.ttf') format('truetype'); */
+  font-weight: 400;
   font-style: normal;
 }
 

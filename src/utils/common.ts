@@ -106,10 +106,6 @@ export function containsDebug(url: string | URL) {
   }
 }
 
-export function buyTicket() {
-  window.open(ticketUrl, '_blank')
-}
-
 export function toPanorama() {
   window.open(vrUrl, '_blank')
 }
