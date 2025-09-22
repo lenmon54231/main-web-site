@@ -8,7 +8,7 @@ done
 echo "[$(date +"%F %T")] git pull done"
 npm ci
 echo "[$(date +"%F %T")] npm install done"
-npm run build
+npm run build > /dev/null 2>&1
 echo "[$(date +"%F %T")] npm run build done"
 rm -rf /www/wwwroot/www.3dweb.top/*
 cp -r dist/* /www/wwwroot/www.3dweb.top/
