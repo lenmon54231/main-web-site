@@ -22,7 +22,7 @@ sudo -u www git reset --hard origin/main
 echo "[$(date +"%F %T")] git reset done"
 
 # 装依赖 + 构建（无日志输出）
-sudo -u www npm ci --omit=dev > /dev/null 2>&1
+sudo -u www npm ci > /dev/null 2>&1
 echo "[$(date +"%F %T")] npm ci done"
 
 sudo -u www npm run build > /dev/null 2>&1
