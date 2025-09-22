@@ -1,23 +1,25 @@
-import { ViteSSG } from 'vite-ssg'
+import { createApp } from 'vue'
+import { createRouter, createWebHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
+import { routes as autoRoutes } from 'vue-router/auto-routes' // 虚拟模块
 
-import { routes } from 'vue-router/auto-routes'
 import App from './App.vue'
-import type { UserModule } from './types'
-
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
 
-export const createApp = ViteSSG(
-  App,
-  {
-    routes: setupLayouts(routes),
-    base: import.meta.env.BASE_URL,
-  },
-  (ctx) => {
-    // install all modules under `modules/`
-    Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
-      .forEach(i => i.install?.(ctx))
-  },
-)
+const routes = setupLayouts(autoRoutes)
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes,
+})
+
+const app = createApp(App)
+app.use(router)
+
+const modules = import.meta.glob<{ install: (ctx: any) => void }>('./modules/*.ts', { eager: true })
+Object.values(modules).forEach(i => i.install?.({ app, router, routes, isClient: true }))
+
+router.isReady().then(() => {
+  app.mount('#app')
+})
