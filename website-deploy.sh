@@ -13,8 +13,10 @@ git config --global --add safe.directory /www/wwwroot/main-web-site
 echo "[$(date +"%F %T")] Git 安全目录配置 done"
 
 # 拉最新代码
-sudo -u www git fetch --depth=1
-echo "[$(date +"%F %T")] git fetch done"
+echo "[$(date +"%F %T")] 正在 git pull ..."
+sudo -u www git pull origin main 2>&1 | while IFS= read -r line; do
+  printf "[%s] %s\n" "$(date +"%F %T")" "$line"
+done
 
 sudo -u www git reset --hard origin/main
 echo "[$(date +"%F %T")] git reset done"
