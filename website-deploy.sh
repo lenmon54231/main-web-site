@@ -1,6 +1,10 @@
 sudo -u www bash
 cd /www/wwwroot/main-web-site
-git pull
+# 带时间戳的 git pull 进度
+echo "[$(date +"%F %T")] 正在 git pull ..."
+git pull origin main 2>&1 | while IFS= read -r line; do
+  printf "[%s] %s\n" "$(date +"%F %T")" "$line"
+done
 echo "[$(date +"%F %T")] git pull done"
 npm ci
 echo "[$(date +"%F %T")] npm install done"
