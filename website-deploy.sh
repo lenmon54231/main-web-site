@@ -2,7 +2,6 @@ sudo -u www bash
 cd /www/wwwroot/main-web-site
 git pull
 echo "[$(date +"%F %T")] git pull done"
-git reset --hard origin/main
 npm ci
 echo "[$(date +"%F %T")] npm install done"
 npm run build
