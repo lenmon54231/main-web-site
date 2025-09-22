@@ -1,10 +1,9 @@
 sudo -u www bash
 cd /www/wwwroot/main-web-site
-git fetch --depth=1
+git fetch origin
 echo "[$(date +"%F %T")] git pull done"
 git reset --hard origin/main
-rm -rf node_modules package-lock.json
-npm install
+npm ci
 echo "[$(date +"%F %T")] npm install done"
 npm run build
 echo "[$(date +"%F %T")] npm run build done"
