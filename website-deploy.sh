@@ -1,6 +1,6 @@
 sudo -u www bash
 cd /www/wwwroot/main-web-site
-git fetch origin
+git pull
 echo "[$(date +"%F %T")] git pull done"
 git reset --hard origin/main
 npm ci
