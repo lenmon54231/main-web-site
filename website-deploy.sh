@@ -6,7 +6,7 @@ git pull origin main 2>&1 | while IFS= read -r line; do
   printf "[%s] %s\n" "$(date +"%F %T")" "$line"
 done
 echo "[$(date +"%F %T")] git pull done"
-npm ci
+npm ci > /dev/null 2>&1
 echo "[$(date +"%F %T")] npm install done"
 npm run build > /dev/null 2>&1
 echo "[$(date +"%F %T")] npm run build done"
