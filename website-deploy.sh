@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e   # 任何命令报错立即退出，防止继续跑
+
 cd /www/wwwroot/main-web-site || exit
 echo "[$(date +"%F %T")] 进入目录：$(pwd)"
 
@@ -22,9 +24,12 @@ sudo -u www git reset --hard origin/main
 echo "[$(date +"%F %T")] git reset done"
 
 # 装依赖 + 构建（无日志输出）
-sudo -u www npm ci
-echo "[$(date +"%F %T")] npm ci done"
+echo "[$(date +"%F %T")] npm install ..."
+sudo -u www rm -f package-lock.json
+sudo -u www npm install
+echo "[$(date +"%F %T")] npm install done"
 
+echo "[$(date +"%F %T")] npm run build ..."
 sudo -u www npm run build
 echo "[$(date +"%F %T")] npm run build done"
 
@@ -35,4 +40,4 @@ echo "[$(date +"%F %T")] 清空目标目录 done"
 sudo -u www cp -r dist/* /www/wwwroot/www.3dweb.top/
 echo "[$(date +"%F %T")] 拷贝文件 done"
 
-echo "[$(date +"%F %T")] 全部流程完成"
+echo "[$(date +"%F %T")] ===== 部署完成 ====="
