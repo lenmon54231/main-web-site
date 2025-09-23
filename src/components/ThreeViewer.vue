@@ -117,7 +117,6 @@ onMounted(() => {
     }
 
     tex.colorSpace = THREE.SRGBColorSpace
-    tex.matrix.setUvTransform(0, 0, 1, 1, 0, 0, 0)
 
     scene.background = tex
   })
