@@ -40,7 +40,7 @@ onMounted(() => {
   <div class="mx-15px hidden h-full max-w-1300px w-full items-center justify-between lg:flex">
     <div class="h-full flex-row-start">
       <img
-        class="h-70%"
+        class="h-70% opacity-80 transition-500 hover:op-100"
         :src="logoImage"
         object-cover
       >

@@ -44,7 +44,7 @@ async function updateUsers(item) {
 </script>
 
 <template>
-  <div class="relative w-full flex-col-center flex-1 bg-blue">
+  <div class="relative w-full flex-col-center flex-1 bg-dark">
     <div class="absolute h-100vh w-full">
       <Galaxy />
     </div>

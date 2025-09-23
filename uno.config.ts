@@ -125,6 +125,7 @@ export default defineConfig({
     ['flex-row-wrap-around', 'flex flex-row flex-wrap justify-around items-center'],
     ['flex-row-wrap-between', 'flex flex-row flex-wrap justify-between items-center'],
     ['bg-blue', 'bg-[linear-gradient(135deg,#0B0C10_0%,#0a4b5e_60%,#0D98BA_100%)] '],
+    ['bg-dark', 'bg-[linear-gradient(135deg,#0B0C10_0%,#0B0C10_20%,#0a4b5e_53%,#0a4b5e_54%,#0B0C10_90%,#0B0C10_100%)] '],
     ['bg-gold', 'bg-[linear-gradient(135deg,#FFA500_0%,#F6C325_100%)] color-white '],
     ['bg-green', 'bg-[linear-gradient(135deg,#32CD32_0%,#228B22_100%)] color-white '],
     ['bg-red', 'bg-[linear-gradient(135deg,#E34234_0%,#C21E56_100%)] color-white '],
