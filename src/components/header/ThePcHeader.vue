@@ -5,41 +5,19 @@ interface Props {
   headerItemList?: any
   env?: string
 }
-const props = withDefaults(defineProps<Props>(), {
+
+withDefaults(defineProps<Props>(), {
   headerItemList: () => [],
   env: 'pc',
 })
 
-const emits = defineEmits(['toggleLocales', 'toPanorama', 'updateIsTop', 'updateActiveHeaderId', 'buyTicket'])
+const emits = defineEmits(['toPanorama', 'updateActiveHeaderId'])
 
 function toPanorama() {
   emits('toPanorama')
 }
 
 const activeHeaderId = ref('home')
-
-onMounted(async () => {
-  if (props.env === 'pc' && activeHeaderId.value === 'home') {
-    addScrollEvent()
-  }
-})
-
-async function addScrollEvent() {
-  window.addEventListener('scroll', changeHeaderStyle)
-}
-
-const isTop = ref(true)
-function changeHeaderStyle() {
-  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop
-  if (scrollPosition === 0) {
-    emits('updateIsTop', true)
-    isTop.value = true
-  }
-  else {
-    emits('updateIsTop', false)
-    isTop.value = false
-  }
-}
 
 const changeActiveHeaderId = function (id: string) {
   activeHeaderId.value = id
@@ -50,38 +28,26 @@ const route = useRoute()
 watch(() => route.path, async (n) => {
   const nPath = n !== '/' && n ? n.split('/')[1] : 'home'
   changeActiveHeaderId(nPath)
-  changeHeaderStyle()
-  if (props.env === 'pc' && props.headerItemList.find((e: { isTrans: any, id: string }) => e.isTrans && nPath === e.id)) {
-    // 跳转到首页时，添加滚动事件监听
-    addScrollEvent()
-  }
-  else {
-    // 离开首页时，移除滚动事件监听
-    removeScrollEvent()
-  }
 })
 
 onMounted(() => {
   const path = route.path !== '/' && route.path ? route.path.split('/')[1] : 'home'
   changeActiveHeaderId(path)
 })
-
-onUnmounted(() => {
-  removeScrollEvent()
-})
-
-function removeScrollEvent() {
-  window.removeEventListener('scroll', changeHeaderStyle)
-}
 </script>
 
 <template>
   <div class="mx-15px hidden h-full max-w-1300px w-full items-center justify-between lg:flex">
-    <img
-      class="mt-8px w-100px sm:mt-0px sm:max-w-216px"
-      :src="logoImage"
-      object-cover
-    >
+    <div class="h-full flex-row-start">
+      <img
+        class="h-70%"
+        :src="logoImage"
+        object-cover
+      >
+      <div class="mb-7px ml-10px text-36px font-600 tracking-wider">
+        Voyager
+      </div>
+    </div>
     <div class="h-full flex-row-around">
       <div
         v-for="(item, index) in headerItemList"

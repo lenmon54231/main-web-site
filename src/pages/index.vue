@@ -1,32 +1,33 @@
 <script setup lang="ts">
-import homeBCImage from '~/assets/image/home/home_bc.webp'
-
 defineOptions({
   name: 'IndexPage',
 })
 </script>
 
 <template>
-  <div class="w-full flex flex-1 flex-col items-center justify-start bg-blue">
-    <!-- 首屏大图 -->
-    <div class="big-home-image-container relative w-full overflow-hidden">
-      <img class="h-full w-full object-cover" :src="homeBCImage">
+  <div class="relative min-h-100vh w-full flex flex-1 flex-col items-center justify-start bg-blue">
+    <div class="absolute h-full w-full">
+      <LightRays
+        rays-origin="top-center"
+        rays-color="#00ffff"
+        :rays-speed="1.5"
+        :light-spread="0.8"
+        :ray-length="1.2"
+        :follow-mouse="true"
+        :mouse-influence="0.1"
+        :noise-amount="0.1"
+        :distortion="0.05"
+        class-name="custom-rays"
+      />
     </div>
-    <div class="mt-103px text-44px font-800 lg:text-62px">
-      Where the world builds software
+    <div class="absolute h-full w-full flex-col-center">
+      <div class="mt-103px text-44px color-amber font-800 brightness-100 lg:text-62px hover:brightness-270">
+        Where the world builds software
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.big-home-image-container {
-  height: calc(100vh - 56px);
-  @apply lg:h-100vh;
-}
 
-.marking-info-container {
-  @apply hidden;
-  @apply lg:w-full lg:h-200px lg:block lg:flex-col-start;
-  background: linear-gradient(180deg, rgba(201, 180, 114, 0) 0%, rgba(0, 214, 253, 0.5) 100%);
-}
 </style>

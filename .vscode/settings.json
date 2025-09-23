@@ -1,9 +1,23 @@
 {
-  "cSpell.words": ["Vitesse", "Vite", "unocss", "vitest", "vueuse", "pinia", "demi", "antfu", "iconify", "intlify", "vitejs", "unplugin", "npm"],
+  "cSpell.words": [
+    "antfu",
+    "demi",
+    "iconify",
+    "intlify",
+    "limeng",
+    "npm",
+    "pinia",
+    "unocss",
+    "unplugin",
+    "Vite",
+    "vitejs",
+    "Vitesse",
+    "vitest",
+    "vueuse"
+  ],
   "i18n-ally.sourceLanguage": "zh-CN",
   "i18n-ally.displayLanguage": "zh-CN",
   "i18n-ally.keystyle": "nested",
-  "i18n-ally.localesPaths": "locales",
   "i18n-ally.sortKeys": true,
 
   // Disable the default formatter
@@ -50,5 +64,8 @@
 
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "locales"
+  ]
 }

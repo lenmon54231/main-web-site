@@ -85,14 +85,6 @@ export default defineConfig(({ command }) => ({
     // see uno.config.ts for config
     Unocss(),
 
-    // https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n
-    VueI18n({
-      runtimeOnly: true,
-      compositionOnly: true,
-      fullInstall: true,
-      include: [path.resolve(__dirname, 'locales/**')],
-    }),
-
     // https://github.com/feat-agency/vite-plugin-webfont-dl
     WebfontDownload(),
 

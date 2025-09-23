@@ -2,17 +2,17 @@
 import { getCurrentEnv, toPanorama } from '~/utils/common'
 
 const headerItemList = ref([
-  { id: 'home', name: '敦煌', path: '/',
+  { id: 'home', name: 'HOME', path: '/',
   },
-  { id: 'introduction', name: '接口测试', path: '/introduction' },
+  { id: 'introduction', name: 'PROJECTS', path: '/introduction' },
   {
     id: 'guide',
-    name: '模型展示',
+    name: 'ABOUT',
     path: '/guide',
   },
   {
     id: 'panorama',
-    name: '全景图',
+    name: 'PANORAMA',
     path: '/panorama',
   },
 ])
@@ -40,45 +40,15 @@ function move() {
   document.body.style.overflow = 'auto'
 }
 
-const headInfo = {
-  title: '小破站',
-  meta: [
-    {
-      name: 'description',
-      content: 'panorama, AR',
-    },
-  ],
-  link: [
-    {
-      rel: 'icon',
-      href: () => '/favicon.png',
-    },
-  ],
-}
-useHead(headInfo)
-
 function toPanoramaAndClose() {
   closeMenuList()
   toPanorama()
-}
-
-const isTop = ref(true)
-function updateIsTop(e: boolean) {
-  isTop.value = e
 }
 
 const activeHeaderId = ref('home')
 function updateActiveHeaderId(e: string) {
   activeHeaderId.value = e
 }
-
-const isNavTrans = computed(() => {
-  let pass = false
-  if (headerItemList.value.find(e => e.isTrans && activeHeaderId.value === e.id) && isTop.value && env.value === 'pc') {
-    pass = true
-  }
-  return pass
-})
 
 const route = useRoute()
 watch(() => route.path, async () => {
@@ -90,16 +60,14 @@ watch(() => route.path, async () => {
 <template>
   <nav
     :class="[
-      isNavTrans ? ' color-semantic-100' : ' color-semantic-200',
       env === 'pc' ? 'h-80px' : 'h-54px',
     ]"
-    class="fixed z-2 w-full flex-row-center text-16px font-600 tracking-wider"
+    class="fixed z-2 w-full flex-row-center text-16px color-semantic-200 font-600 tracking-wider"
   >
     <TheMobileHeader @show-menu-list="showMenuList" />
     <ThePcHeader
       :header-item-list="headerItemList"
       @to-panorama="toPanoramaAndClose"
-      @update-is-top="updateIsTop"
       @update-active-header-id="updateActiveHeaderId"
     />
   </nav>

@@ -44,23 +44,28 @@ async function updateUsers(item) {
 </script>
 
 <template>
-  <div class="w-full flex-col-center flex-1 bg-blue">
-    <div class="flex-center">
-      <input v-model="email" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
-      <button class="mt-12px h-40px w-120px rounded-4px bg-#eee hover:bg-#788 hover:color-#fff" @click="addUser">
-        新增用户
-      </button>
+  <div class="relative w-full flex-col-center flex-1 bg-blue">
+    <div class="absolute h-100vh w-full">
+      <Galaxy />
     </div>
-    <div class="mt-12px">
-      <div v-for="item in usersList" :key="item._id" class="mt-12px flex-row-center">
-        <input v-model="item.username" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
-        <input v-model="item.email" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
-        <button class="mr-12px h-40px w-120px rounded-4px bg-#eee hover:bg-#788 hover:color-#fff" @click="updateUsers(item)">
-          更新名称
+    <div class="absolute">
+      <div class="flex-center">
+        <input v-model="email" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
+        <button class="mt-12px h-40px w-120px rounded-4px bg-green hover:brightness-120" @click="addUser">
+          新增用户
         </button>
-        <button class="h-40px w-120px rounded-4px bg-red color-#fff hover:bg-#788" @click="deleteUsers(item)">
-          删除
-        </button>
+      </div>
+      <div class="mt-12px">
+        <div v-for="item in usersList" :key="item._id" class="mt-12px flex-row-center">
+          <input v-model="item.username" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
+          <input v-model="item.email" class="mr-20px h-40px rounded-4px bg-#eee" type="text">
+          <button class="mr-12px h-40px w-120px rounded-4px bg-gold hover:brightness-120" @click="updateUsers(item)">
+            更新名称
+          </button>
+          <button class="h-40px w-120px rounded-4px bg-red hover:brightness-120" @click="deleteUsers(item)">
+            删除
+          </button>
+        </div>
       </div>
     </div>
   </div>
