@@ -11,11 +11,7 @@ withDefaults(defineProps<Props>(), {
   env: 'pc',
 })
 
-const emits = defineEmits(['toPanorama', 'updateActiveHeaderId'])
-
-function toPanorama() {
-  emits('toPanorama')
-}
+const emits = defineEmits(['updateActiveHeaderId'])
 
 const activeHeaderId = ref('home')
 
@@ -54,16 +50,7 @@ onMounted(() => {
         :key="index"
         class="mx-15px h-full max-w-76px w-76px w-76px flex-col-center text-center"
       >
-        <div
-          v-if="item.id === 'panorama'"
-          class="header-item-container"
-          :class="activeHeaderId === item.id ? 'active' : ''"
-          @click="toPanorama"
-        >
-          {{ item.name }}
-        </div>
         <RouterLink
-          v-else
           class="header-item-container"
           :class="activeHeaderId === item.id ? 'active' : ''"
           :to="item.path"

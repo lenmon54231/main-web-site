@@ -40,11 +40,6 @@ function move() {
   document.body.style.overflow = 'auto'
 }
 
-function toPanoramaAndClose() {
-  closeMenuList()
-  toPanorama()
-}
-
 const activeHeaderId = ref('home')
 function updateActiveHeaderId(e: string) {
   activeHeaderId.value = e
@@ -67,7 +62,6 @@ watch(() => route.path, async () => {
     <TheMobileHeader @show-menu-list="showMenuList" />
     <ThePcHeader
       :header-item-list="headerItemList"
-      @to-panorama="toPanoramaAndClose"
       @update-active-header-id="updateActiveHeaderId"
     />
   </nav>
@@ -75,7 +69,6 @@ watch(() => route.path, async () => {
     :is-show-menu-list="isShowMenuList"
     :header-item-list="headerItemList"
     @close="closeMenuList"
-    @to-panorama="toPanoramaAndClose"
   />
 </template>
 

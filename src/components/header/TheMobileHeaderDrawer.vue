@@ -11,14 +11,10 @@ withDefaults(defineProps<Props>(), {
   headerItemList: () => [],
 })
 
-const emits = defineEmits(['close', 'toPanorama'])
+const emits = defineEmits(['close'])
 
 function close() {
   emits('close')
-}
-
-function toPanorama() {
-  emits('toPanorama')
 }
 </script>
 
@@ -50,15 +46,7 @@ function toPanorama() {
       <div
         v-for="(item, index) in headerItemList" :key="index"
       >
-        <div
-          v-if="item.id === 'panorama'"
-          class="mobile-menu-item flex-row-start border-b-1 border-b-semantic-700/30 pl-34px"
-          @click="toPanorama"
-        >
-          {{ item.name }}
-        </div>
         <RouterLink
-          v-if="item.id !== 'logo' && item.id !== 'panorama' && item.id !== 'language' && item.id !== 'ticket'"
           :to="item.path"
           class="mobile-menu-item flex-row-start border-b-1 border-b-semantic-700/30 pl-34px"
           @click="close"
